@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoPonto Condomínio - Guia de Reciclagem Ubatuba</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        ocean: {
+                            50: '#f0f9ff',
+                            500: '#0ea5e9',
+                            700: '#0369a1',
+                        },
+                        // Standard CONAMA Waste Colors
+                        conama: {
+                            plastic: '#ef4444', // Red
+                            paper: '#3b82f6',   // Blue
+                            glass: '#10b981',   // Green
+                            metal: '#eab308',   // Yellow
+                            hazard: '#f97316',  // Orange (Pilhas/Baterias)
+                            organic: '#78350f', // Brown
+                            e-waste: '#8b5cf6', // Purple
+                            oil: '#d97706',     // Amber
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+        }
+        .print-only { display: none; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col pb-20 md:pb-6">
+
+    <!-- TOP HEADER -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-ocean-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+                    <i data-lucide="recycle" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h1 class="text-base font-bold text-slate-900 leading-tight flex items-center gap-2">
+                        EcoPonto Condomínio
+                        <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">Ubatuba</span>
+                    </h1>
+                    <p class="text-xs text-slate-500 flex items-center gap-1">
+                        <i data-lucide="building" class="w-3 h-3"></i>
+                        <span id="currentCondoName">Condomínio Residencial Costa Sul</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Action Buttons Desktop / Mobile Header -->
+            <div class="flex items-center gap-2">
+                <button onclick="openModal('qrModal')" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-xs font-semibold text-slate-700 transition">
+                    <i data-lucide="qr-code" class="w-4 h-4 text-brand-600"></i>
+                    <span>Placa para Elevador</span>
+                </button>
+                <button onclick="openModal('reportModal')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-700 text-xs font-semibold text-white shadow-sm transition">
+                    <i data-lucide="alert-circle" class="w-4 h-4"></i>
+                    <span class="hidden sm:inline">Reportar à Zelo</span>
+                    <span class="sm:hidden">Reportar</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-4 flex-1 w-full space-y-6">
+
+        <!-- ODS 13 HERO BANNER -->
+        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-800 via-teal-800 to-slate-900 text-white p-5 sm:p-6 shadow-xl">
+            <!-- Background Decorative Elements -->
+            <div class="absolute -right-8 -bottom-10 opacity-10 pointer-events-none">
+                <i data-lucide="tree-pine" class="w-64 h-64"></i>
+            </div>
+            <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div class="space-y-2 max-w-2xl">
+                    <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md text-xs font-medium text-emerald-200 border border-white/10">
+                        <i data-lucide="globe-2" class="w-3.5 h-3.5"></i>
+                        <span>ODS 13 - Ação Contra a Mudança Global do Clima</span>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight">
+                        Descarte correto no condomínio faz a diferença na costa de Ubatuba
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                        Evite que resíduos recicláveis atinjam nossas praias e rios. Saiba onde descartar cada item nos EcoPontos internos do condomínio.
+                    </p>
+                </div>
+                <!-- Condominium Monthly Eco Achievements counter -->
+                <div class="bg-white/10 backdrop-blur-md rounded-xl p-3.5 border border-white/15 flex items-center justify-around md:flex-col md:min-w-[180px] gap-2 text-center">
+                    <div>
+                        <div class="text-2xl font-black text-emerald-300" id="heroKgCounter">1.480 kg</div>
+                        <div class="text-[10px] uppercase tracking-wider text-slate-300">Reciclados este mês</div>
+                    </div>
+                    <div class="h-8 w-px bg-white/20 md:w-full md:h-px"></div>
+                    <div>
+                        <div class="text-2xl font-black text-cyan-300" id="heroCo2Counter">2.150 kg</div>
+                        <div class="text-[10px] uppercase tracking-wider text-slate-300">CO₂ evitado no condomínio</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NAVIGATION TABS -->
+        <div class="border-b border-slate-200 bg-white rounded-xl shadow-sm p-1.5 flex gap-1 overflow-x-auto hide-scrollbar">
+            <button onclick="switchTab('search')" id="tab-search" class="tab-btn active flex-1 min-w-[120px] py-2.5 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-2 transition bg-brand-600 text-white shadow-sm">
+                <i data-lucide="search" class="w-4 h-4"></i>
+                <span>Onde Descartar?</span>
+            </button>
+            <button onclick="switchTab('points')" id="tab-points" class="tab-btn flex-1 min-w-[120px] py-2.5 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-2 transition text-slate-600 hover:bg-slate-100">
+                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                <span>EcoPontos Internos</span>
+            </button>
+            <button onclick="switchTab('calculator')" id="tab-calculator" class="tab-btn flex-1 min-w-[120px] py-2.5 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-2 transition text-slate-600 hover:bg-slate-100">
+                <i data-lucide="calculator" class="w-4 h-4"></i>
+                <span>Calculadora ODS 13</span>
+            </button>
+            <button onclick="switchTab('ubatuba')" id="tab-ubatuba" class="tab-btn flex-1 min-w-[120px] py-2.5 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-2 transition text-slate-600 hover:bg-slate-100">
+                <i data-lucide="info" class="w-4 h-4"></i>
+                <span>Ubatuba & Projeto</span>
+            </button>
+        </div>
+
+        <!-- TAB 1: ONDE DESCARTAR (SEARCH & DIRECTORY) -->
+        <section id="view-search" class="space-y-4">
+            <!-- Search Inputs and Filters -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-3">
+                <div class="relative">
+                    <i data-lucide="search" class="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="searchInput" onkeyup="filterItems()" placeholder="Digite o item (ex: caixa de pizza, garrafa PET, óleo, pilha, vidro)..." class="w-full pl-11 pr-10 py-3 bg-slate-50 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition">
+                    <button onclick="clearSearch()" id="clearSearchBtn" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+                        <i data-lucide="x-circle" class="w-5 h-5"></i>
+                    </button>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="flex items-center gap-1.5 overflow-x-auto hide-scrollbar pt-1">
+                    <span class="text-xs font-semibold text-slate-400 mr-1 flex items-center gap-1">
+                        <i data-lucide="filter" class="w-3.5 h-3.5"></i>
+                        Filtrar:
+                    </span>
+                    <button onclick="setCategoryFilter('all')" class="cat-chip active text-xs font-medium px-3 py-1.5 rounded-full bg-slate-900 text-white transition whitespace-nowrap" data-cat="all">Todos</button>
+                    <button onclick="setCategoryFilter('plastic')" class="cat-chip text-xs font-medium px-3 py-1.5 rounded-full bg-red-100 text-red-700 hover:bg-red-200 transition whitespace-nowrap" data-cat="plastic">Plástico</button>
+                    <button onclick="setCategoryFilter('paper')" class="cat-chip text-xs font-medium px-3 py-1.5 rounded-full bg-blue-100 text-blue-700 hover:bg-blue-200 transition whitespace-nowrap" data-cat="paper">Papel/Papelão</button>
+                    <button onclick="setCategoryFilter('glass')" class="cat-chip text-xs font-medium px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-700 hover:bg-emerald-200 transition whitespace-nowrap" data-cat="glass">Vidro</button>
+                    <button onclick="setCategoryFilter('metal')" class="cat-chip text-xs font-medium px-3 py-1.5 rounded-full bg-yellow-100 text-yellow-800 hover:bg-yellow-200 transition whitespace-nowrap" data-cat="metal">Metal</button>
+                    <button onclick="setCategoryFilter('special')" class="cat-chip text-xs font-medium px-3 py-1.5 rounded-full bg-orange-100 text-orange-700 hover:bg-orange-200 transition whitespace-nowrap" data-cat="special">Pilhas & Eletrônicos</button>
+                    <button onclick="setCategoryFilter('oil')" class="cat-chip text-xs font-medium px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap" data-cat="oil">Óleo Usado</button>
+                </div>
+            </div>
+
+            <!-- Items Cards Grid -->
+            <div id="itemsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+                <!-- Dynamically Populated by JS -->
+            </div>
+
+            <!-- Empty Search State -->
+            <div id="emptySearchState" class="hidden bg-white p-8 rounded-xl border border-slate-200 text-center space-y-3">
+                <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto">
+                    <i data-lucide="help-circle" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-base font-bold text-slate-800">Item não encontrado na busca rápida</h3>
+                <p class="text-xs text-slate-500 max-w-md mx-auto">
+                    Não tem certeza onde descartar este resíduo específico? Entre em contato diretamente com a zeladoria do condomínio.
+                </p>
+                <button onclick="openModal('reportModal')" class="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition">
+                    <i data-lucide="message-square" class="w-4 h-4"></i>
+                    Perguntar à Administração
+                </button>
+            </div>
+        </section>
+
+        <!-- TAB 2: PONTOS DE COLETA INTERNOS (VISUALIZER) -->
+        <section id="view-points" class="hidden space-y-4">
+            <!-- Points Selector Bar -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-3">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="text-sm font-bold text-slate-900">Mapeamento dos EcoPontos Internos</h3>
+                        <p class="text-xs text-slate-500">Selecione um local no condomínio para ver regras e itens aceitos</p>
+                    </div>
+                    <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-slate-100 text-slate-600 border border-slate-200">
+                        5 Locais Ativos
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 pt-1" id="pointSelectorBtns">
+                    <!-- Dynamic Buttons -->
+                </div>
+            </div>
+
+            <!-- Interactive Point Detail Card -->
+            <div id="pointDetailCard" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <!-- Dynamic Content Loaded Here -->
+            </div>
+        </section>
+
+        <!-- TAB 3: CALCULADORA ODS 13 -->
+        <section id="view-calculator" class="hidden space-y-4">
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 font-bold text-xs">ODS 13</span>
+                        <h3 class="text-lg font-bold text-slate-900">Calculadora de Impacto Ambiental Semanal</h3>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1">
+                        Estime a economia de recursos e redução da pegada de carbono da sua moradia ao descartar nos EcoPontos.
+                    </p>
+                </div>
+
+                <!-- Calculators Controls -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- PET Bottles Slider -->
+                    <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                        <div class="flex justify-between items-center text-xs font-semibold">
+                            <span class="flex items-center gap-1.5 text-slate-700">
+                                <i data-lucide="wine" class="w-4 h-4 text-red-500"></i> Garrafas PET / Embalagens
+                            </span>
+                            <span class="text-brand-700 bg-brand-100 px-2 py-0.5 rounded font-bold" id="valPet">10 unidades/sem</span>
+                        </div>
+                        <input type="range" id="inputPet" min="0" max="50" value="10" oninput="updateCalculator()" class="w-full accent-brand-600">
+                    </div>
+
+                    <!-- Aluminum Cans Slider -->
+                    <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                        <div class="flex justify-between items-center text-xs font-semibold">
+                            <span class="flex items-center gap-1.5 text-slate-700">
+                                <i data-lucide="disc" class="w-4 h-4 text-yellow-600"></i> Latas de Alumínio
+                            </span>
+                            <span class="text-brand-700 bg-brand-100 px-2 py-0.5 rounded font-bold" id="valAluminum">12 latas/sem</span>
+                        </div>
+                        <input type="range" id="inputAluminum" min="0" max="60" value="12" oninput="updateCalculator()" class="w-full accent-brand-600">
+                    </div>
+
+                    <!-- Cardboard / Paper Slider -->
+                    <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                        <div class="flex justify-between items-center text-xs font-semibold">
+                            <span class="flex items-center gap-1.5 text-slate-700">
+                                <i data-lucide="box" class="w-4 h-4 text-blue-500"></i> Papelão e Caixas (kg)
+                            </span>
+                            <span class="text-brand-700 bg-brand-100 px-2 py-0.5 rounded font-bold" id="valPaper">3 kg/sem</span>
+                        </div>
+                        <input type="range" id="inputPaper" min="0" max="20" value="3" step="0.5" oninput="updateCalculator()" class="w-full accent-brand-600">
+                    </div>
+
+                    <!-- Glass Bottles Slider -->
+                    <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                        <div class="flex justify-between items-center text-xs font-semibold">
+                            <span class="flex items-center gap-1.5 text-slate-700">
+                                <i data-lucide="glass-water" class="w-4 h-4 text-emerald-600"></i> Garrafas / Potes de Vidro
+                            </span>
+                            <span class="text-brand-700 bg-brand-100 px-2 py-0.5 rounded font-bold" id="valGlass">4 un/sem</span>
+                        </div>
+                        <input type="range" id="inputGlass" min="0" max="30" value="4" oninput="updateCalculator()" class="w-full accent-brand-600">
+                    </div>
+
+                    <!-- Cooking Oil Slider -->
+                    <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2 md:col-span-2">
+                        <div class="flex justify-between items-center text-xs font-semibold">
+                            <span class="flex items-center gap-1.5 text-slate-700">
+                                <i data-lucide="droplet" class="w-4 h-4 text-amber-600"></i> Óleo de Cozinha Usado (Litros em PET)
+                            </span>
+                            <span class="text-brand-700 bg-brand-100 px-2 py-0.5 rounded font-bold" id="valOil">1 Litro/mês</span>
+                        </div>
+                        <input type="range" id="inputOil" min="0" max="10" value="1" step="0.5" oninput="updateCalculator()" class="w-full accent-brand-600">
+                        <p class="text-[11px] text-amber-700 flex items-center gap-1">
+                            <i data-lucide="info" class="w-3.5 h-3.5"></i>
+                            1 Litro de óleo descartado no ralo contamina até 25.000 Litros de água potável ou mar.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Calculator Impact Output Panel -->
+                <div class="bg-gradient-to-br from-slate-900 to-emerald-950 rounded-xl p-5 text-white space-y-4 shadow-lg">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                        <span class="text-xs font-semibold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+                            <i data-lucide="sparkles" class="w-4 h-4"></i> Seus Resultados Estimados Anuais
+                        </span>
+                        <span class="text-[10px] text-slate-400">Baseado no hábito semanal</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                        <div class="bg-white/5 p-3 rounded-lg border border-white/10">
+                            <i data-lucide="cloud-rain" class="w-5 h-5 text-emerald-400 mx-auto mb-1"></i>
+                            <div class="text-xl font-extrabold text-white" id="calcCo2">124 kg</div>
+                            <div class="text-[10px] text-slate-300">CO₂ evitado/ano</div>
+                        </div>
+
+                        <div class="bg-white/5 p-3 rounded-lg border border-white/10">
+                            <i data-lucide="droplets" class="w-5 h-5 text-cyan-400 mx-auto mb-1"></i>
+                            <div class="text-xl font-extrabold text-white" id="calcWater">325.000 L</div>
+                            <div class="text-[10px] text-slate-300">Água preservada</div>
+                        </div>
+
+                        <div class="bg-white/5 p-3 rounded-lg border border-white/10">
+                            <i data-lucide="zap" class="w-5 h-5 text-amber-400 mx-auto mb-1"></i>
+                            <div class="text-xl font-extrabold text-white" id="calcEnergy">410 kWh</div>
+                            <div class="text-[10px] text-slate-300">Energia poupada</div>
+                        </div>
+
+                        <div class="bg-white/5 p-3 rounded-lg border border-white/10">
+                            <i data-lucide="trees" class="w-5 h-5 text-emerald-300 mx-auto mb-1"></i>
+                            <div class="text-xl font-extrabold text-white" id="calcTrees">2.4 árvores</div>
+                            <div class="text-[10px] text-slate-300">Equivalente plantado</div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 bg-emerald-900/40 p-3 rounded-lg border border-emerald-500/30 text-xs">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-400 flex-shrink-0"></i>
+                            <span>Selo Condomínio Sustentável: <strong>Sua unidade evita a contaminação da orla costeira de Ubatuba!</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: UBATUBA & PROJETO ACADÊMICO -->
+        <section id="view-ubatuba" class="hidden space-y-4">
+            <!-- Municipal Info Card -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <div class="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-cyan-100 text-cyan-800">
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                            Prefeitura Municipal de Ubatuba
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mt-1">Cronograma da Coleta Seletiva Pública</h3>
+                        <p class="text-xs text-slate-500">
+                            A caminhão da coleta seletiva municipal recolhe resíduos nos bairros em dias específicos. Nosso condomínio armazena nos EcoPontos para apresentação no dia correto.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Schedule Table / Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 pt-2">
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                        <div class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                            <i data-lucide="calendar" class="w-4 h-4 text-brand-600"></i>
+                            Terças & Sextas (Manhã)
+                        </div>
+                        <div class="text-xs text-slate-600 mt-1 font-medium">Praia Grande, Tenório & Itaguá</div>
+                        <p class="text-[11px] text-slate-400 mt-1">Apresentar materiais recicláveis secos até as 07h00.</p>
+                    </div>
+
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                        <div class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                            <i data-lucide="calendar" class="w-4 h-4 text-brand-600"></i>
+                            Segundas & Quintas (Manhã)
+                        </div>
+                        <div class="text-xs text-slate-600 mt-1 font-medium">Centro, Perequê-Açú & Barra Seca</div>
+                        <p class="text-[11px] text-slate-400 mt-1">Coleta efetuada pelas equipes conveniadas do município.</p>
+                    </div>
+
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                        <div class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                            <i data-lucide="truck" class="w-4 h-4 text-brand-600"></i>
+                            Quartas-Feiras
+                        </div>
+                        <div class="text-xs text-slate-600 mt-1 font-medium">Toninhas, Enseada & Maranduba</div>
+                        <p class="text-[11px] text-slate-400 mt-1">Inclui recolhimento de vidros e papéis em grande escala.</p>
+                    </div>
+                </div>
+
+                <!-- Co-operative partnerships -->
+                <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-emerald-900 flex items-start gap-3">
+                    <i data-lucide="heart-handshake" class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                    <div>
+                        <strong>Cooperativas Locais Parceiras:</strong> Os materiais recicláveis triados no condomínio são destinados às cooperativas de catadores de Ubatuba, gerando renda local e garantindo que o resíduo não vá para os aterros da região.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Academic Extension Project Info -->
+            <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-5 rounded-2xl shadow-sm space-y-4">
+                <div class="flex items-center gap-2">
+                    <div class="p-2 rounded-lg bg-white/10 text-emerald-400">
+                        <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-base font-bold">Projeto de Extensão Universitária</h4>
+                        <p class="text-xs text-slate-300">Gestão Sustentável de Resíduos em Condomínios Litorâneos</p>
+                    </div>
+                </div>
+
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Esta aplicação interativa e o sistema de sinalização visual dos EcoPontos foram desenvolvidos no âmbito do 
+                    <strong>Projeto de Extensão Acadêmica</strong> em parceria com moradores, síndicos e instituições de ensino superior do Litoral Norte de São Paulo.
+                </p>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-white/10 text-[11px] text-slate-300">
+                    <div>
+                        <span class="block text-slate-400">Coordenação</span>
+                        <strong class="text-white">Prof. Dr. Gestão Ambiental</strong>
+                    </div>
+                    <div>
+                        <span class="block text-slate-400">Uso Local</span>
+                        <strong class="text-white">Condomínios Ubatuba</strong>
+                    </div>
+                    <div>
+                        <span class="block text-slate-400">Foco ODS</span>
+                        <strong class="text-white">ODS 12 e ODS 13</strong>
+                    </div>
+                    <div>
+                        <span class="block text-slate-400">Atualização</span>
+                        <strong class="text-white">Outubro/2026</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- BOTTOM NAV FOR MOBILE -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-2 py-1.5 flex justify-around">
+        <button onclick="switchTab('search')" id="mob-tab-search" class="mob-tab flex flex-col items-center gap-0.5 p-2 text-brand-600">
+            <i data-lucide="search" class="w-5 h-5"></i>
+            <span class="text-[10px] font-medium">Onde Descartar</span>
+        </button>
+        <button onclick="switchTab('points')" id="mob-tab-points" class="mob-tab flex flex-col items-center gap-0.5 p-2 text-slate-500">
+            <i data-lucide="map-pin" class="w-5 h-5"></i>
+            <span class="text-[10px] font-medium">EcoPontos</span>
+        </button>
+        <button onclick="switchTab('calculator')" id="mob-tab-calculator" class="mob-tab flex flex-col items-center gap-0.5 p-2 text-slate-500">
+            <i data-lucide="calculator" class="w-5 h-5"></i>
+            <span class="text-[10px] font-medium">Calculadora</span>
+        </button>
+        <button onclick="switchTab('ubatuba')" id="mob-tab-ubatuba" class="mob-tab flex flex-col items-center gap-0.5 p-2 text-slate-500">
+            <i data-lucide="info" class="w-5 h-5"></i>
+            <span class="text-[10px] font-medium">Ubatuba</span>
+        </button>
+    </nav>
+
+    <!-- MODAL 1: ITEM DETAIL MODAL -->
+    <div id="itemDetailModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl relative animate-in fade-in zoom-in duration-200">
+            <button onclick="closeModal('itemDetailModal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-600 p-1">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div id="itemDetailContent">
+                <!-- Dynamically Filled -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: ELEVATOR QR CODE & NOTICE MODAL -->
+    <div id="qrModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-5 shadow-2xl relative">
+            <button onclick="closeModal('qrModal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-600 p-1">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="text-center space-y-1">
+                <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center mx-auto">
+                    <i data-lucide="qr-code" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900">Cartaz para Elevador & Murais</h3>
+                <p class="text-xs text-slate-500">Aponte a câmera do celular para abrir o Guia de Reciclagem do Condomínio</p>
+            </div>
+
+            <!-- Printable Preview Box -->
+            <div class="border-2 border-dashed border-slate-300 p-5 rounded-xl bg-slate-50 text-center space-y-3" id="printableNotice">
+                <div class="text-xs font-bold text-slate-800 uppercase tracking-wider">EcoPonto Condomínio Ubatuba</div>
+                <div class="text-sm font-extrabold text-brand-700">Guia Rápido de Descarte de Lixo</div>
+                
+                <!-- QR Code placeholder image using standard open API -->
+                <div class="bg-white p-3 rounded-lg inline-block shadow-sm border border-slate-200">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://ecoponto-condominio-ubatuba.app" alt="QR Code Elevador" class="w-36 h-36 mx-auto">
+                </div>
+
+                <p class="text-[11px] text-slate-600 font-medium">
+                    Escaneie para saber exatamente onde descartar pilhas, óleo de cozinha, vidros e plásticos.
+                </p>
+                <div class="text-[10px] text-slate-400 border-t border-slate-200 pt-2">
+                    Projeto de Extensão - Gestão de Resíduos Recicláveis
+                </div>
+            </div>
+
+            <div class="flex gap-2">
+                <button onclick="window.print()" class="w-full py-2.5 bg-brand-600 text-white rounded-xl text-xs font-bold hover:bg-brand-700 transition flex items-center justify-center gap-2">
+                    <i data-lucide="printer" class="w-4 h-4"></i> Imprimir Cartaz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: REPORT TO CONDO ADMIN / ZELO -->
+    <div id="reportModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl relative">
+            <button onclick="closeModal('reportModal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-600 p-1">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center">
+                    <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold text-slate-900">Comunicar Zeladoria / Síndico</h3>
+                    <p class="text-xs text-slate-500">EcoPonto cheio ou dúvida de descarte</p>
+                </div>
+            </div>
+
+            <form onsubmit="submitReport(event)" class="space-y-3">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Unidade / Bloco e Apartamento</label>
+                    <input type="text" required placeholder="Ex: Bloco A - Ap 32" class="w-full px-3 py-2 bg-slate-50 rounded-lg border border-slate-200 text-xs focus:ring-2 focus:ring-brand-500 outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Local do EcoPonto</label>
+                    <select class="w-full px-3 py-2 bg-slate-50 rounded-lg border border-slate-200 text-xs focus:ring-2 focus:ring-brand-500 outline-none">
+                        <option>EcoPonto Central (Térreo)</option>
+                        <option>EcoPonto Garagem G1 (Subsolo)</option>
+                        <option>Lixeira Bloco A</option>
+                        <option>Lixeira Bloco B</option>
+                        <option>Lixeira Bloco C</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Ocorrência</label>
+                    <select class="w-full px-3 py-2 bg-slate-50 rounded-lg border border-slate-200 text-xs focus:ring-2 focus:ring-brand-500 outline-none">
+                        <option>Lixeira de recicláveis totalmente cheia</option>
+                        <option>Descarte incorreto detectado (mistura de orgânico)</option>
+                        <option>Falta de sacos de coleta no local</option>
+                        <option>Dúvida sobre onde descartar item específico</option>
+                        <option>Outra sugestão</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Detalhes (Opcional)</label>
+                    <textarea rows="3" placeholder="Descreva brevemente para a equipe de zeladoria..." class="w-full px-3 py-2 bg-slate-50 rounded-lg border border-slate-200 text-xs focus:ring-2 focus:ring-brand-500 outline-none"></textarea>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl shadow-md transition flex items-center justify-center gap-2">
+                        <i data-lucide="send" class="w-4 h-4"></i> Enviar Chamado Interno
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast" class="hidden fixed bottom-20 md:bottom-6 right-6 z-50 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl flex items-center gap-3 text-xs font-medium border border-slate-700 transition">
+        <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400"></i>
+        <span id="toastMsg">Mensagem enviada!</span>
+    </div>
+
+    <script>
+        /* DATA DATABASE FOR DISPOSAL ITEMS AND POINTS */
+        const WASTE_DATABASE = [
+            {
+                id: 'pet',
+                name: 'Garrafas PET & Plásticos Limpos',
+                category: 'plastic',
+                conamaColor: 'bg-red-500',
+                conamaBadge: 'Plástico (Vermelho)',
+                location: 'EcoPonto Central & Lixeiras dos Blocos',
+                prep: 'Lavar com água de reuso para retirar resíduos e amassar a garrafa para economizar espaço no container.',
+                accepted: ['Garrafas de refrigerante/água', 'Frascos de xampu e detergente', 'Potes de sorvete', 'Sacolas limpas'],
+                rejected: ['Seringas', 'Embalagens com restos de comida engordurada', 'Plástico filme muito engordurado'],
+                icon: 'wine'
+            },
+            {
+                id: 'pizza',
+                name: 'Caixas de Pizza & Papelão',
+                category: 'paper',
+                conamaColor: 'bg-blue-500',
+                conamaBadge: 'Papel (Azul)',
+                location: 'EcoPonto Central (Área de Papelão)',
+                prep: 'SEPARAR: A tampa da caixa sem gordura vai no Papelão. A parte do fundo suja de queijo/óleo DEVE ir no lixo Orgânico/Comum.',
+                accepted: ['Caixas de papelão desmontadas', 'Papéis de escritório', 'Jornais', 'Embalagens de cartão limpas'],
+                rejected: ['Guardanapos usados', 'Papel higiênico', 'Caixa de pizza engordurada'],
+                icon: 'box'
+            },
+            {
+                id: 'oil',
+                name: 'Óleo de Cozinha Usado',
+                category: 'oil',
+                conamaColor: 'bg-amber-600',
+                conamaBadge: 'Óleo Vegetal (Coleta Especial)',
+                location: 'EcoPonto Central (Bombona Amarela) & Garagem G1',
+                prep: 'Espere o óleo esfriar totalmente. Use um funil para armazená-lo dentro de uma GARRAFA PET transparente bem vedada. Nunca jogue na pia!',
+                accepted: ['Óleo de fritura vegetal', 'Azeite de oliva', 'Óleo de conservas'],
+                rejected: ['Óleo mineral/automotivo', 'Graxa', 'Água com sabão'],
+                icon: 'droplet'
+            },
+            {
+                id: 'batteries',
+                name: 'Pilhas, Baterias & Pequenos Eletrônicos',
+                category: 'special',
+                conamaColor: 'bg-orange-500',
+                conamaBadge: 'Logística Reversa (Laranja)',
+                location: 'EcoPonto Garagem G1 (Totem Eletrônico)',
+                prep: 'Deposite pilhas recarregáveis ou comuns diretamente no coletor do Totem. Não misturar com lixo comum nem molhar.',
+                accepted: ['Pilhas AA/AAA/9V', 'Baterias de celular', 'Carregadores velhos', 'Fones de ouvido quebrados'],
+                rejected: ['Baterias industriais grandes', 'Lâmpadas fluorescentes quebradas'],
+                icon: 'battery-charging'
+            },
+            {
+                id: 'glass',
+                name: 'Garrafas e Potes de Vidro',
+                category: 'glass',
+                conamaColor: 'bg-emerald-500',
+                conamaBadge: 'Vidro (Verde)',
+                location: 'EcoPonto Central (Contêiner Reforçado Verde)',
+                prep: 'Enxaguar o recipiente. Se o vidro estiver QUEBRADO, envolva-o em papelão ou caixa e identifique bem para proteger a equipe de zeladoria!',
+                accepted: ['Garrafas de cerveja/vinho', 'Potes de maionese/café', 'Frascos de perfume'],
+                rejected: ['Espelhos', 'Lâmpadas', 'Vidro pirex/temperado de panela', 'Telas de TV'],
+                icon: 'glass-water'
+            },
+            {
+                id: 'tetrapak',
+                name: 'Embalagens Longa Vida (Tetra Pak)',
+                category: 'paper',
+                conamaColor: 'bg-blue-500',
+                conamaBadge: 'Papel/Multicamadas (Azul)',
+                location: 'EcoPonto Central & Lixeiras dos Blocos',
+                prep: 'Escorrer todo o leite ou suco restante, esmague a caixa e coloque a tampa plástica de volta ou junto no plástico.',
+                accepted: ['Caixas de leite', 'Caixas de suco/molho de tomate', 'Creme de leite'],
+                rejected: ['Caixas com alimentos apodrecidos no interior'],
+                icon: 'package'
+            },
+            {
+                id: 'cans',
+                name: 'Latas de Alumínio e Aço',
+                category: 'metal',
+                conamaColor: 'bg-yellow-500',
+                conamaBadge: 'Metal (Amarelo)',
+                location: 'EcoPonto Central & Lixeiras dos Blocos',
+                prep: 'Pressione o lacre para dentro ou amasse a lata. Retire excessos de molho de latas de conserva.',
+                accepted: ['Latas de cerveja/refrigerante', 'Latas de milho/sardinha', 'Aerosóis vazios sem tampa'],
+                rejected: ['Esponjas de aço engorduradas', 'Latas com tinta química'],
+                icon: 'disc'
+            },
+            {
+                id: 'styrofoam',
+                name: 'Isopor (EPS Limpo)',
+                category: 'plastic',
+                conamaColor: 'bg-red-500',
+                conamaBadge: 'Plástico EPS (Vermelho)',
+                location: 'EcoPonto Central (Bag de Isopor)',
+                prep: 'O isopor deve estar 100% limpo, sem resíduos de molho de carne ou marmita. O isopor limpo é 100% reciclável!',
+                accepted: ['Bandejas brancas de frutas limpas', 'Placas de proteção de eletrodomésticos'],
+                rejected: ['Bandejas sujas com sangue de carne ou molho impregnado'],
+                icon: 'square'
+            },
+            {
+                id: 'capsules',
+                name: 'Cápsulas de Café Usadas',
+                category: 'special',
+                conamaColor: 'bg-purple-500',
+                conamaBadge: 'Coleta Especial / Logística',
+                location: 'EcoPonto Garagem G1 (Caixa de Cápsulas)',
+                prep: 'Não precisa retirar a borra se descartar no coletor específico de cápsulas no G1.',
+                accepted: ['Cápsulas de alumínio (Nespresso/Doce Gusto)', 'Cápsulas plásticas de café'],
+                rejected: ['Filtros de papel usados com pó de café (vão no Orgânico)'],
+                icon: 'coffee'
+            }
+        ];
+
+        const CONDO_POINTS = [
+            {
+                id: 'central',
+                name: 'EcoPonto Central (Térreo)',
+                locationDesc: 'Próximo à saída de serviço / Portaria Principal',
+                hours: 'Acesso 24h para moradores',
+                bins: [
+                    { name: 'Contêiner Azul', material: 'Papel & Papelão', color: 'bg-blue-500' },
+                    { name: 'Contêiner Vermelho', material: 'Plástico e Isopor Limpo', color: 'bg-red-500' },
+                    { name: 'Contêiner Amarelo', material: 'Metais e Latas', color: 'bg-yellow-500' },
+                    { name: 'Contêiner Verde', material: 'Vidros (Inteiros e Embalados)', color: 'bg-emerald-500' },
+                    { name: 'Bombona Amarela', material: 'Óleo Vegetal em Garrafa PET', color: 'bg-amber-600' }
+                ],
+                notes: 'Ponto principal de triagem. Conta com câmeras de segurança para coibir descarte irregular de entulho e móveis.'
+            },
+            {
+                id: 'g1',
+                name: 'EcoPonto Garagem G1 (Subsolo)',
+                locationDesc: 'Próximo ao elevador social da Torre A / Vaga 12',
+                hours: 'Acesso 24h',
+                bins: [
+                    { name: 'Totem Laranja', material: 'Pilhas, Baterias e Celulares', color: 'bg-orange-500' },
+                    { name: 'Coletor Roxo', material: 'Cápsulas de Café', color: 'bg-purple-500' },
+                    { name: 'Bombona de Tampinhas', material: 'Tampas Plásticas para Causa Animal', color: 'bg-pink-500' }
+                ],
+                notes: 'Destinado a itens pequenos de alta contaminação e coleta solidária de tampinhas plásticas.'
+            },
+            {
+                id: 'blocoA',
+                name: 'Lixeira Intermediária Bloco A',
+                locationDesc: 'Hall de Serviço - Andar Térreo Torre A',
+                hours: '07h00 às 22h00',
+                bins: [
+                    { name: 'Lixeira Azul', material: 'Recicláveis Secos (Plástico/Papel/Lata)', color: 'bg-blue-600' },
+                    { name: 'Lixeira Cinza', material: 'Rejeito / Comum', color: 'bg-slate-600' }
+                ],
+                notes: 'Apenas para recicláveis secos do dia a dia. Para vidros e óleo, utilize o EcoPonto Central.'
+            },
+            {
+                id: 'blocoB',
+                name: 'Lixeira Intermediária Bloco B',
+                locationDesc: 'Hall de Serviço - Andar Térreo Torre B',
+                hours: '07h00 às 22h00',
+                bins: [
+                    { name: 'Lixeira Azul', material: 'Recicláveis Secos (Plástico/Papel/Lata)', color: 'bg-blue-600' },
+                    { name: 'Lixeira Cinza', material: 'Rejeito / Comum', color: 'bg-slate-600' }
+                ],
+                notes: 'Coleta diária pela equipe de zeladoria às 10h00 e 17h00.'
+            },
+            {
+                id: 'blocoC',
+                name: 'Lixeira Intermediária Bloco C',
+                locationDesc: 'Hall de Serviço - Andar Térreo Torre C',
+                hours: '07h00 às 22h00',
+                bins: [
+                    { name: 'Lixeira Azul', material: 'Recicláveis Secos (Plástico/Papel/Lata)', color: 'bg-blue-600' },
+                    { name: 'Lixeira Cinza', material: 'Rejeito / Comum', color: 'bg-slate-600' }
+                ],
+                notes: 'Coleta diária pela equipe de zeladoria às 10h00 e 17h00.'
+            }
+        ];
+
+        let selectedCategory = 'all';
+        let selectedPointId = 'central';
+
+        /* INITIALIZATION */
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            renderItemsGrid(WASTE_DATABASE);
+            renderPointSelectors();
+            renderPointDetail('central');
+            updateCalculator();
+        });
+
+        /* TAB SWITCHING SYSTEM */
+        function switchTab(tabId) {
+            // Hide all tabs
+            ['search', 'points', 'calculator', 'ubatuba'].forEach(id => {
+                document.getElementById(`view-${id}`).classList.add('hidden');
+                
+                // Desktop tab styling
+                const btn = document.getElementById(`tab-${id}`);
+                if (btn) {
+                    btn.classList.remove('bg-brand-600', 'text-white', 'shadow-sm');
+                    btn.classList.add('text-slate-600', 'hover:bg-slate-100');
+                }
+
+                // Mobile tab styling
+                const mobBtn = document.getElementById(`mob-tab-${id}`);
+                if (mobBtn) {
+                    mobBtn.classList.remove('text-brand-600');
+                    mobBtn.classList.add('text-slate-500');
+                }
+            });
+
+            // Show selected
+            document.getElementById(`view-${tabId}`).classList.remove('hidden');
+            
+            // Active Desktop Tab
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-brand-600', 'text-white', 'shadow-sm');
+                activeBtn.classList.remove('text-slate-600', 'hover:bg-slate-100');
+            }
+
+            // Active Mobile Tab
+            const activeMobBtn = document.getElementById(`mob-tab-${tabId}`);
+            if (activeMobBtn) {
+                activeMobBtn.classList.add('text-brand-600');
+                activeMobBtn.classList.remove('text-slate-500');
+            }
+        }
+
+        /* SEARCH & FILTER LOGIC */
+        function filterItems() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const clearBtn = document.getElementById('clearSearchBtn');
+
+            if (query.length > 0) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+
+            const filtered = WASTE_DATABASE.filter(item => {
+                const matchesQuery = item.name.toLowerCase().includes(query) ||
+                                     item.accepted.some(a => a.toLowerCase().includes(query)) ||
+                                     item.prep.toLowerCase().includes(query);
+                
+                const matchesCat = selectedCategory === 'all' || item.category === selectedCategory;
+
+                return matchesQuery && matchesCat;
+            });
+
+            renderItemsGrid(filtered);
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            filterItems();
+        }
+
+        function setCategoryFilter(cat) {
+            selectedCategory = cat;
+            
+            // Update chip styles
+            document.querySelectorAll('.cat-chip').forEach(chip => {
+                if (chip.getAttribute('data-cat') === cat) {
+                    chip.classList.add('bg-slate-900', 'text-white');
+                    chip.classList.remove('bg-red-100', 'bg-blue-100', 'bg-emerald-100', 'bg-yellow-100', 'bg-orange-100', 'bg-amber-100');
+                } else {
+                    chip.classList.remove('bg-slate-900', 'text-white');
+                }
+            });
+
+            filterItems();
+        }
+
+        function renderItemsGrid(items) {
+            const grid = document.getElementById('itemsGrid');
+            const empty = document.getElementById('emptySearchState');
+
+            if (items.length === 0) {
+                grid.innerHTML = '';
+                empty.classList.remove('hidden');
+                return;
+            }
+
+            empty.classList.add('hidden');
+            grid.innerHTML = items.map(item => `
+                <div onclick="openItemModal('${item.id}')" class="bg-white rounded-xl p-4 border border-slate-200 hover:border-brand-500 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between space-y-3 group">
+                    <div class="space-y-2">
+                        <div class="flex items-start justify-between gap-2">
+                            <span class="inline-flex items-center gap-1.5 text-[10px] font-extrabold px-2 py-0.5 rounded-full text-white ${item.conamaColor}">
+                                ${item.conamaBadge}
+                            </span>
+                            <i data-lucide="${item.icon}" class="w-5 h-5 text-slate-400 group-hover:text-brand-600 transition"></i>
+                        </div>
+                        <h4 class="text-sm font-bold text-slate-900 group-hover:text-brand-700 transition leading-snug">${item.name}</h4>
+                        <p class="text-xs text-slate-500 line-clamp-2">${item.prep}</p>
+                    </div>
+
+                    <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-600 font-medium">
+                        <span class="flex items-center gap-1 text-slate-500">
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-600"></i>
+                            ${item.location.split('&')[0]}
+                        </span>
+                        <span class="text-brand-600 font-bold group-hover:translate-x-0.5 transition flex items-center gap-0.5">
+                            Ver regras <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                        </span>
+                    </div>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        /* ITEM MODAL DETAIL */
+        function openItemModal(itemId) {
+            const item = WASTE_DATABASE.find(i => i.id === itemId);
+            if (!item) return;
+
+            const modalContent = document.getElementById('itemDetailContent');
+            modalContent.innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-full text-white ${item.conamaColor}">
+                            ${item.conamaBadge}
+                        </span>
+                    </div>
+
+                    <h3 class="text-xl font-extrabold text-slate-900">${item.name}</h3>
+
+                    <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                        <span class="text-[11px] uppercase tracking-wider font-bold text-slate-400 block">Onde Levar no Condomínio:</span>
+                        <div class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-brand-600"></i>
+                            ${item.location}
+                        </div>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <h5 class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                            Instrução de Preparo do Resíduo:
+                        </h5>
+                        <p class="text-xs text-slate-600 bg-emerald-50/50 p-3 rounded-lg border border-emerald-100 leading-relaxed">
+                            ${item.prep}
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 text-xs">
+                        <div class="p-3 bg-slate-50 rounded-lg space-y-1">
+                            <span class="font-bold text-emerald-700 block flex items-center gap-1">
+                                <i data-lucide="check" class="w-3.5 h-3.5"></i> Aceito:
+                            </span>
+                            <ul class="list-disc list-inside text-[11px] text-slate-600 space-y-0.5">
+                                ${item.accepted.map(a => `<li>${a}</li>`).join('')}
+                            </ul>
+                        </div>
+
+                        <div class="p-3 bg-red-50/50 rounded-lg space-y-1">
+                            <span class="font-bold text-red-700 block flex items-center gap-1">
+                                <i data-lucide="x" class="w-3.5 h-3.5"></i> NÃO JOGAR AQUI:
+                            </span>
+                            <ul class="list-disc list-inside text-[11px] text-slate-600 space-y-0.5">
+                                ${item.rejected.map(r => `<li>${r}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <button onclick="closeModal('itemDetailModal')" class="w-full py-2.5 bg-slate-900 text-white rounded-xl text-xs font-bold hover:bg-slate-800 transition">
+                        Entendi
+                    </button>
+                </div>
+            `;
+
+            lucide.createIcons();
+            openModal('itemDetailModal');
+        }
+
+        /* CONDO POINTS VISUALIZER LOGIC */
+        function renderPointSelectors() {
+            const container = document.getElementById('pointSelectorBtns');
+            container.innerHTML = CONDO_POINTS.map(p => `
+                <button onclick="renderPointDetail('${p.id}')" id="btn-point-${p.id}" class="point-btn p-2.5 rounded-xl border text-left transition flex flex-col justify-between ${p.id === 'central' ? 'border-brand-600 bg-brand-50/50 text-brand-900 font-bold' : 'border-slate-200 bg-white text-slate-600'}">
+                    <span class="text-xs block truncate">${p.name.split(' ')[0]} ${p.name.split(' ')[1] || ''}</span>
+                    <span class="text-[10px] text-slate-400 block">${p.bins.length} coletores</span>
+                </button>
+            `).join('');
+        }
+
+        function renderPointDetail(pointId) {
+            selectedPointId = pointId;
+            const point = CONDO_POINTS.find(p => p.id === pointId);
+            if (!point) return;
+
+            // Update selector button styles
+            document.querySelectorAll('.point-btn').forEach(btn => {
+                btn.classList.remove('border-brand-600', 'bg-brand-50/50', 'text-brand-900', 'font-bold');
+                btn.classList.add('border-slate-200', 'bg-white', 'text-slate-600');
+            });
+            const activeBtn = document.getElementById(`btn-point-${pointId}`);
+            if (activeBtn) {
+                activeBtn.classList.add('border-brand-600', 'bg-brand-50/50', 'text-brand-900', 'font-bold');
+            }
+
+            const detailCard = document.getElementById('pointDetailCard');
+            detailCard.innerHTML = `
+                <div class="p-5 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+                        <div>
+                            <div class="inline-flex items-center gap-1 text-[11px] font-semibold text-brand-700 bg-brand-100 px-2 py-0.5 rounded">
+                                <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> ${point.locationDesc}
+                            </div>
+                            <h3 class="text-lg font-extrabold text-slate-900 mt-1">${point.name}</h3>
+                        </div>
+                        <span class="text-xs text-slate-500 bg-slate-100 px-3 py-1 rounded-full font-medium self-start sm:self-auto flex items-center gap-1">
+                            <i data-lucide="clock" class="w-3.5 h-3.5"></i> ${point.hours}
+                        </span>
+                    </div>
+
+                    <div class="space-y-2">
+                        <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider">Coletores Disponíveis neste Ponto:</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+                            ${point.bins.map(b => `
+                                <div class="p-3 rounded-xl border border-slate-200 bg-slate-50/80 flex items-center gap-3">
+                                    <div class="w-4 h-10 rounded-md ${b.color} flex-shrink-0 shadow-sm"></div>
+                                    <div>
+                                        <div class="text-xs font-bold text-slate-900">${b.name}</div>
+                                        <div class="text-[11px] text-slate-600 font-medium">${b.material}</div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="p-3.5 bg-blue-50/60 rounded-xl border border-blue-200 text-xs text-blue-900 flex items-start gap-2.5">
+                        <i data-lucide="info" class="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5"></i>
+                        <div>
+                            <strong>Observações da Síndico / Zeladoria:</strong> ${point.notes}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            lucide.createIcons();
+        }
+
+        /* IMPACT CALCULATOR ENGINE (ODS 13) */
+        function updateCalculator() {
+            const pet = parseFloat(document.getElementById('inputPet').value) || 0;
+            const aluminum = parseFloat(document.getElementById('inputAluminum').value) || 0;
+            const paper = parseFloat(document.getElementById('inputPaper').value) || 0;
+            const glass = parseFloat(document.getElementById('inputGlass').value) || 0;
+            const oil = parseFloat(document.getElementById('inputOil').value) || 0;
+
+            // Label updates
+            document.getElementById('valPet').innerText = `${pet} un/sem`;
+            document.getElementById('valAluminum').innerText = `${aluminum} latas/sem`;
+            document.getElementById('valPaper').innerText = `${paper} kg/sem`;
+            document.getElementById('valGlass').innerText = `${glass} un/sem`;
+            document.getElementById('valOil').innerText = `${oil} L/mês`;
+
+            // Annualized Calculations
+            // PET: ~0.08 kg CO2 saved per bottle, ~2L water saved per bottle
+            // Aluminum: ~0.16 kg CO2 saved per can, high energy saved
+            // Paper: 1kg paper saves ~1.5kg CO2, 26L water, trees
+            // Glass: ~0.3kg CO2 per bottle
+            // Oil: 1L oil saved = 25,000L water preserved from contamination
+
+            const annualPet = pet * 52;
+            const annualAluminum = aluminum * 52;
+            const annualPaper = paper * 52;
+            const annualGlass = glass * 52;
+            const annualOil = oil * 12;
+
+            const totalCo2 = (annualPet * 0.08) + (annualAluminum * 0.16) + (annualPaper * 1.5) + (annualGlass * 0.3);
+            const totalWater = (annualPet * 2) + (annualPaper * 26) + (annualOil * 25000);
+            const totalEnergy = (annualAluminum * 0.4) + (annualPet * 0.3) + (annualPaper * 2);
+            const totalTrees = (annualPaper * 0.017); // ~0.017 trees per kg recycled paper
+
+            document.getElementById('calcCo2').innerText = `${Math.round(totalCo2)} kg`;
+            document.getElementById('calcWater').innerText = `${Math.round(totalWater).toLocaleString('pt-BR')} L`;
+            document.getElementById('calcEnergy').innerText = `${Math.round(totalEnergy)} kWh`;
+            document.getElementById('calcTrees').innerText = `${totalTrees.toFixed(1)} árvores`;
+        }
+
+        /* MODAL UTILITIES */
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        /* REPORT FORM SUBMISSION */
+        function submitReport(e) {
+            e.preventDefault();
+            closeModal('reportModal');
+            showToast('Chamado registrado! A equipe de zeladoria do condomínio foi notificada.');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
