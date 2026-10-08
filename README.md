@@ -24,7 +24,6 @@ O **EcoPonto Condomínio** foi projetado para resolver falhas de comunicação i
 - **Templating Engine:** Jinja2
 - **Frontend:** HTML5, CSS3 (Tailwind CSS) e JavaScript (Vanilla)
 - **Servidor ASGI:** Uvicorn
-- **Armazenamento:** Ficheiro de registo local (`avisos.txt`)
 
 ---
 
